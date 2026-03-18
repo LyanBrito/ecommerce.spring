@@ -1,6 +1,6 @@
 package org.example.ecommerce.repositories;
 
-import org.example.ecommerce.entitys.CategoriesEntity;
+import org.example.ecommerce.entities.CategoriesEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;

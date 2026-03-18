@@ -2,7 +2,7 @@ package org.example.ecommerce.services;
 
 import org.example.ecommerce.dto.users.UsersReq;
 import org.example.ecommerce.dto.users.UsersRes;
-import org.example.ecommerce.entitys.UserEntity;
+import org.example.ecommerce.entities.UserEntity;
 import org.example.ecommerce.repositories.UsersRepo;
 import org.springframework.stereotype.Service;
 

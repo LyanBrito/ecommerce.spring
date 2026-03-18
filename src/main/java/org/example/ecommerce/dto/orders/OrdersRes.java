@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.example.ecommerce.entitys.PaymentEntity;
-import org.example.ecommerce.entitys.UserEntity;
-import org.example.ecommerce.entitys.enums.OrderStatus;
+import org.example.ecommerce.entities.PaymentEntity;
+import org.example.ecommerce.entities.UserEntity;
+import org.example.ecommerce.entities.enums.OrderStatus;
 
 import java.time.LocalDate;
 import java.util.UUID;

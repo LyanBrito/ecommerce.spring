@@ -1,8 +1,8 @@
 package org.example.ecommerce.dto.users;
 
 import lombok.*;
-import org.example.ecommerce.entitys.OrderEntity;
-import org.example.ecommerce.entitys.UserEntity;
+import org.example.ecommerce.entities.OrderEntity;
+import org.example.ecommerce.entities.UserEntity;
 
 import java.util.ArrayList;
 import java.util.List;

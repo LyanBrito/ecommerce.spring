@@ -1,4 +1,4 @@
-package org.example.ecommerce.entitys.enums;
+package org.example.ecommerce.entities.enums;
 
 public enum Roles {
     ADMIN,

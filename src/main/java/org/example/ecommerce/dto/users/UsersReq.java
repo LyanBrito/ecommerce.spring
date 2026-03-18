@@ -1,7 +1,7 @@
 package org.example.ecommerce.dto.users;
 
 import lombok.*;
-import org.example.ecommerce.entitys.enums.Roles;
+import org.example.ecommerce.entities.enums.Roles;
 
 @Getter
 @Setter

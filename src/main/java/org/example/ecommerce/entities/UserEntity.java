@@ -2,7 +2,7 @@ package org.example.ecommerce.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.example.ecommerce.entitys.enums.Roles;
+import org.example.ecommerce.entities.enums.Roles;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,7 +1,7 @@
 package org.example.ecommerce.dto.products;
 
 import lombok.*;
-import org.example.ecommerce.entitys.CategoriesEntity;
+import org.example.ecommerce.entities.CategoriesEntity;
 
 import java.util.HashSet;
 import java.util.Set;

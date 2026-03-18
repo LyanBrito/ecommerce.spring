@@ -2,10 +2,10 @@ package org.example.ecommerce.services;
 
 import org.example.ecommerce.dto.orders.OrdersReq;
 import org.example.ecommerce.dto.orders.OrdersRes;
-import org.example.ecommerce.entitys.OrderEntity;
-import org.example.ecommerce.entitys.PaymentEntity;
-import org.example.ecommerce.entitys.UserEntity;
-import org.example.ecommerce.entitys.enums.OrderStatus;
+import org.example.ecommerce.entities.OrderEntity;
+import org.example.ecommerce.entities.PaymentEntity;
+import org.example.ecommerce.entities.UserEntity;
+import org.example.ecommerce.entities.enums.OrderStatus;
 import org.example.ecommerce.repositories.OrdersRepo;
 import org.example.ecommerce.repositories.UsersRepo;
 import org.springframework.stereotype.Service;
