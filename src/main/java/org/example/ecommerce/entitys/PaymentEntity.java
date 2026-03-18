@@ -1,5 +1,6 @@
 package org.example.ecommerce.entitys;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,5 +22,11 @@ public class PaymentEntity {
     private LocalDate moment;
     @OneToOne
     @MapsId
+    @JsonBackReference
     private OrderEntity orderEntity;
+
+    public PaymentEntity(OrderEntity orderEntity) {
+        this.moment = LocalDate.now();
+        this.orderEntity = orderEntity;
+    }
 }

@@ -14,8 +14,8 @@ import lombok.Setter;
 public class OrderItemPK {
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private OrderEntity order;
+    @JoinColumn(name = "orderEntity_id")
+    private OrderEntity orderEntity;
     @ManyToOne
     @JoinColumn(name = "product_id")
     private ProductEntity product;

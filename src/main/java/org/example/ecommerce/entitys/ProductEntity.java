@@ -1,5 +1,6 @@
 package org.example.ecommerce.entitys;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -26,4 +27,9 @@ public class ProductEntity {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "category_id"))
     private Set<CategoriesEntity> categories = new HashSet<>();
+
+    @OneToMany(mappedBy = "id.product")
+    @JsonIgnore
+    private Set<OrderItem> items = new HashSet<>();
+
 }

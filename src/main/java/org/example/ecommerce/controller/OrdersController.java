@@ -4,10 +4,7 @@ import jakarta.validation.Valid;
 import org.example.ecommerce.dto.orders.OrdersReq;
 import org.example.ecommerce.services.OrderService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -21,8 +18,8 @@ public class OrdersController {
         this.orderService = orderService;
     }
 
-    @PostMapping("/create")
-    public ResponseEntity<?> createOrder(@Valid @RequestBody OrdersReq req, UUID userId){
+    @PostMapping("/create/{userId}")
+    public ResponseEntity<?> createOrder(@Valid @RequestBody OrdersReq req,@PathVariable UUID userId){
         return ResponseEntity.ok(orderService.create(req, userId));
     }
 }

@@ -22,10 +22,16 @@ public class OrderEntity {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private UserEntity client;
-    @OneToOne(mappedBy = "order", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "orderEntity", cascade = CascadeType.ALL)
     private PaymentEntity paymentEntity;
     // o que acontecer com a classe pedido, acontece com a classe pagamento
 
-    @OneToMany(mappedBy = "id.order")
+    @OneToMany(mappedBy = "id.orderEntity")
     private Set<OrderItem> items =  new HashSet<>();
+
+    public OrderEntity(OrderStatus order_status, UserEntity client, LocalDate moment) {
+        this.order_status = OrderStatus.WAITING_PAYMENT;
+        this.client = client;
+        this.moment = LocalDate.now();
+    }
 }
