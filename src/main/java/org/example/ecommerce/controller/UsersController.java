@@ -19,6 +19,6 @@ public class UsersController {
     }
     @PostMapping("/new")
     public ResponseEntity<?> addUser (@Valid @RequestBody UsersReq req) {
-        return ResponseEntity.ok(userService.newUser(req));
+        return ResponseEntity.ok(userService.createNew(req));
     }
 }
