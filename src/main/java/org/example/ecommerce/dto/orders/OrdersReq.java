@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.example.ecommerce.entities.UserEntity;
 
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Getter
@@ -13,6 +14,6 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrdersReq {
-    private UUID id;
+    private LocalDate moment;
     private UserEntity client;
 }
