@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/order")
+@RequestMapping("/orders")
 public class OrdersController {
 
     private final OrderService orderService;
@@ -21,5 +21,13 @@ public class OrdersController {
     @PostMapping("/create/{userId}")
     public ResponseEntity<?> createOrder(@Valid @RequestBody OrdersReq req,@PathVariable UUID userId){
         return ResponseEntity.ok(orderService.create(req, userId));
+    }
+    @GetMapping("/show")
+    public ResponseEntity<?> showAll() {
+        return ResponseEntity.ok(orderService.showAll());
+    }
+    @GetMapping("/show/{id}")
+    public ResponseEntity<?> showById(@PathVariable UUID id) {
+        return ResponseEntity.ok(orderService.showById(id));
     }
 }
