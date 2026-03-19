@@ -3,6 +3,7 @@ package org.example.ecommerce.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.ecommerce.dto.products.ProductsReq;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,4 +33,11 @@ public class ProductEntity {
     @JsonIgnore
     private Set<OrderItem> items = new HashSet<>();
 
+    public ProductEntity(ProductsReq req) {
+        this.imgUrl = req.getImgUrl();
+        this.price = req.getPrice();
+        this.description = req.getDescription();
+        this.name = req.getName();
+        this.categories = req.getCategories();
+    }
 }
