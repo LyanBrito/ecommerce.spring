@@ -11,6 +11,7 @@ import org.example.ecommerce.repositories.UsersRepo;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -24,14 +25,22 @@ public class OrderService {
         this.usersRepo = usersRepo;
     }
 
-    public OrdersRes create(OrdersReq req, UUID userId){
+    public OrdersRes create(OrdersReq req, UUID userId) {
         UserEntity user = usersRepo.getReferenceById(userId);
         OrderEntity order = new OrderEntity();
-        order.setMoment(LocalDate.now());
-        order.setOrder_status(OrderStatus.WAITING_PAYMENT);
-        order.setPaymentEntity(new PaymentEntity());
-        order.setClient(user);
+        ordersRepo.save(order);
 
-        return new OrdersRes(user);
+        return new OrdersRes(order);
     }
+
+    public OrdersRes showById(UUID id) {
+        OrderEntity order = ordersRepo.findById(id).orElseThrow(() -> new RuntimeException("Order not founded"));
+        return new OrdersRes(order);
+    }
+
+    public OrdersRes showAll() {
+        List<OrderEntity> orders = ordersRepo.findAll();
+        return (OrdersRes) orders.stream().map(OrdersRes::new).toList();
+    }
+
 }
