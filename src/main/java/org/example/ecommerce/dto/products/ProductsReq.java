@@ -12,10 +12,12 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ProductsReq {
-    private UUID id;
     private String name;
     private String description;
     private double price;
     private String imgUrl;
     private Set<CategoriesEntity> categories = new HashSet<>();
+//    certeza de que isso pode dar errado,
+//    mas arrumo depois, ou não chamo categorias.
+//    decido isso amanhã
 }
