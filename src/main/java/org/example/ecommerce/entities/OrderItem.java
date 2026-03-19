@@ -3,13 +3,16 @@ package org.example.ecommerce.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.example.ecommerce.dto.orderItens.OrderItemReq;
 
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class OrderItem {
 
@@ -18,12 +21,13 @@ public class OrderItem {
     private int quantity;
     private double price;
 
-    public OrderItem(OrderEntity order, ProductEntity product ,OrderItemPK id, int quantity, double price) {
+    public OrderItem(OrderEntity order, ProductEntity product , OrderItemReq req) {
         id.setOrderEntity(order);
         id.setProduct(product);
-        this.quantity = quantity;
-        this.price = price;
+        this.quantity = req.getQuantity();
+        this.price = req.getPrice();
     }
+
 
     @JsonBackReference
     public OrderEntity getOrderEntity() {
