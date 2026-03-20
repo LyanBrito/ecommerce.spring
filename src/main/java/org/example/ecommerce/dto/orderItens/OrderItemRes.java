@@ -11,13 +11,15 @@ import java.util.UUID;
 @NoArgsConstructor
 @Getter
 public class OrderItemRes {
-    private OrderItemPK id;
     private int quantity;
     private double price;
+    private String clientName;
+    private String productName;
 
     public OrderItemRes(OrderItem orderItem) {
-        this.id = orderItem.getId();
         this.quantity = orderItem.getQuantity();
         this.price = orderItem.getPrice();
+        this.clientName = orderItem.getId().getOrderEntity().getClient().getName();
+        this.productName = orderItem.getId().getProduct().getName();
     }
 }

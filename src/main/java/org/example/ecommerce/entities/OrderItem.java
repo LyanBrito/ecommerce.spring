@@ -25,7 +25,7 @@ public class OrderItem {
         id.setOrderEntity(order);
         id.setProduct(product);
         this.quantity = req.getQuantity();
-        this.price = req.getPrice();
+        this.price = product.getPrice() * req.getQuantity();
     }
 
 
