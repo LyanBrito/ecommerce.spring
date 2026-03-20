@@ -16,7 +16,7 @@ public class ProductsReq {
     private String description;
     private double price;
     private String imgUrl;
-    private Set<CategoriesEntity> categories = new HashSet<>();
+//    private Set<CategoriesEntity> categories = new HashSet<>();
 //    certeza de que isso pode dar errado,
 //    mas arrumo depois, ou não chamo categorias.
 //    decido isso amanhã

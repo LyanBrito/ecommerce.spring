@@ -23,11 +23,11 @@ public class ProductEntity {
     private double price;
     private String imgUrl;
 
-    @ManyToMany
-    @JoinTable(name = "tb_category_product",
-            joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "category_id"))
-    private Set<CategoriesEntity> categories = new HashSet<>();
+//    @ManyToMany
+//    @JoinTable(name = "tb_category_product",
+//            joinColumns = @JoinColumn(name = "product_id"),
+//            inverseJoinColumns = @JoinColumn(name = "category_id"))
+//    private Set<CategoriesEntity> categories = new HashSet<>();
 
     @OneToMany(mappedBy = "id.product")
     @JsonIgnore
@@ -38,6 +38,6 @@ public class ProductEntity {
         this.price = req.getPrice();
         this.description = req.getDescription();
         this.name = req.getName();
-        this.categories = req.getCategories();
+//        this.categories = req.getCategories();
     }
 }

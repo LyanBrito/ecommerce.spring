@@ -31,8 +31,8 @@ public class ProductService {
         return new ProductsRes(product);
     }
 
-    public ProductsRes showAll() {
+    public List<ProductsRes> showAll() {
         List<ProductEntity> products = productsRepo.findAll();
-        return (ProductsRes) products.stream().map(ProductsRes::new).toList();
+        return products.stream().map(ProductsRes::new).toList();
     }
 }
