@@ -17,13 +17,12 @@ public class OrderItemController {
         this.orderItemService = orderItemService;
     }
 
-    @PostMapping("/create/{order_id}{product_id}")
-//    não sei se isso funciona não em
+    @PostMapping("/create/{order_id}/{product_id}")
     public ResponseEntity<?> createOrderItem(@Valid @RequestBody OrderItemReq req, @PathVariable UUID order_id, @PathVariable UUID product_id) {
         return ResponseEntity.ok(orderItemService.create(req, product_id, order_id));
     }
 
-    @GetMapping("/show/{order_id}{product_id}")
+    @GetMapping("/show/{order_id}/{product_id}")
     public ResponseEntity<?> showById(@PathVariable UUID order_id, @PathVariable UUID product_id) {
         return ResponseEntity.ok(orderItemService.showById(product_id, order_id));
     }
