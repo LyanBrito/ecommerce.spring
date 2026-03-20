@@ -16,6 +16,6 @@ public class CategoriesEntity {
     private UUID id;
     private String name;
 
-    @ManyToMany(mappedBy = "categories")
-    private Set<ProductEntity> products = new HashSet<>();
+//    @ManyToMany(mappedBy = "categories")
+//    private Set<ProductEntity> products = new HashSet<>();
 }
