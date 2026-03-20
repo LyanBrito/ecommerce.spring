@@ -16,18 +16,15 @@ import java.util.UUID;
 @Getter
 @NoArgsConstructor
 public class OrdersRes {
+    private UUID id;
     private LocalDate moment;
     private OrderStatus order_status;
-    private UsersRes user;
-
-    public OrdersRes(OrderEntity orderEntity, UsersRes usersRes) {
-        this.moment = orderEntity.getMoment();
-        this.order_status = orderEntity.getOrder_status();
-        this.user = usersRes;
-    }
+    private UUID user_id;
 
     public OrdersRes(OrderEntity orderEntity) {
+        this.id = orderEntity.getId();
         this.moment = orderEntity.getMoment();
         this.order_status = orderEntity.getOrder_status();
+        this.user_id = (orderEntity.getClient() != null) ? orderEntity.getClient().getId() : null;
     }
 }
