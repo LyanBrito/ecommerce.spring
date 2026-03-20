@@ -11,6 +11,7 @@ import org.example.ecommerce.repositories.OrdersRepo;
 import org.example.ecommerce.repositories.ProductsRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -43,5 +44,10 @@ public class OrderItemService {
 
         return new OrderItemRes(orderItem);
 
+    }
+
+    public List<OrderItemRes> showAll() {
+        List<OrderItem> orderItems = orderItemRepo.findAll();
+        return orderItems.stream().map(OrderItemRes::new).toList();
     }
 }
