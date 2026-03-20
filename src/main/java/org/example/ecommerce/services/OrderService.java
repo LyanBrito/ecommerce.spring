@@ -25,17 +25,14 @@ public class OrderService {
     public OrdersRes create(UUID userId) {
         UserEntity user = usersRepo.findById(userId).orElseThrow(() -> new RuntimeException("User not found"));
         OrderEntity order = new OrderEntity();
-        UsersRes usersRes = new UsersRes(order.getClient());
+        order.setClient(user);
         ordersRepo.save(order);
-
-        return new OrdersRes(order, usersRes);
+        return new OrdersRes(order);
     }
 
     public OrdersRes showById(UUID id) {
-        OrderEntity order = ordersRepo.findById(id).orElseThrow(() -> new RuntimeException("Order not founded"));
-        UsersRes usersRes = new UsersRes(order.getClient());
-
-        return new OrdersRes(order, usersRes);
+        OrderEntity order = ordersRepo.findById(id).orElseThrow(() -> new RuntimeException("Order not found"));
+        return new OrdersRes(order);
     }
 
     public List<OrdersRes> showAll() {
