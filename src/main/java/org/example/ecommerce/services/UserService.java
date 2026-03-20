@@ -23,10 +23,10 @@ public class UserService {
         return users.stream().map(UsersRes::new).toList();
     }
 
-    public String createNew(UsersReq req) {
+    public UsersRes createNew(UsersReq req) {
         UserEntity u = new UserEntity(req);
         usersRepo.save(u);
-        return "creado";
+        return new UsersRes(u);
     }
 
     public UsersRes showById(UUID id) {
@@ -43,7 +43,7 @@ public class UserService {
         return "Successfully Updated";
     }
 
-    public String delete(UUID id){
+    public String delete(UUID id) {
         UserEntity user = usersRepo.findById(id).orElseThrow(() -> new RuntimeException("User not found"));
         usersRepo.deleteById(id);
         return "Successfully Deleted";

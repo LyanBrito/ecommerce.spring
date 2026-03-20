@@ -26,21 +26,21 @@ public class OrderItemService {
         this.productsRepo = productsRepo;
     }
 
-    public String create(OrderItemReq req, UUID product_id, UUID order_id) {
-        ProductEntity product = productsRepo.findById(product_id).orElseThrow(() -> new RuntimeException("cade?"));
-        OrderEntity order = ordersRepo.findById(order_id).orElseThrow(() -> new RuntimeException("foi n"));
+    public OrderItemRes create(OrderItemReq req, UUID product_id, UUID order_id) {
+        ProductEntity product = productsRepo.findById(product_id).orElseThrow(() -> new RuntimeException("Product not found"));
+        OrderEntity order = ordersRepo.findById(order_id).orElseThrow(() -> new RuntimeException("Order not found"));
         OrderItem orderItem = new OrderItem(order, product, req);
         orderItemRepo.save(orderItem);
-        return "New OrderItem creates successfully!";
+        return new OrderItemRes(orderItem);
     }
 
-    public OrderItemRes showById(UUID product_id, UUID order_id){
+    public OrderItemRes showById(UUID product_id, UUID order_id) {
         OrderItemPK pk = new OrderItemPK();
-        ProductEntity product = productsRepo.findById(product_id).orElseThrow(() -> new RuntimeException("cade?"));
-        OrderEntity order = ordersRepo.findById(order_id).orElseThrow(() -> new RuntimeException("foi n"));
+        ProductEntity product = productsRepo.findById(product_id).orElseThrow(() -> new RuntimeException("Product not found"));
+        OrderEntity order = ordersRepo.findById(order_id).orElseThrow(() -> new RuntimeException("Order not found"));
         pk.setOrderEntity(order);
         pk.setProduct(product);
-        OrderItem orderItem = orderItemRepo.findById(pk).orElseThrow(() -> new RuntimeException("foi nao"));
+        OrderItem orderItem = orderItemRepo.findById(pk).orElseThrow(() -> new RuntimeException("OrderItem not found"));
 
         return new OrderItemRes(orderItem);
 

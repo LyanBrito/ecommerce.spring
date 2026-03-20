@@ -18,16 +18,14 @@ public class ProductService {
         this.productsRepo = productsRepo;
     }
 
-    public String create(ProductsReq req) {
+    public ProductsRes create(ProductsReq req) {
         ProductEntity product = new ProductEntity(req);
         productsRepo.save(product);
-
-        return "New product created successfully!";
+        return new ProductsRes(product);
     }
 
     public ProductsRes showById(UUID id) {
-        ProductEntity product = productsRepo.findById(id).orElseThrow(() -> new RuntimeException("deu ruim chefe"));
-        // mudar essa logs depois em
+        ProductEntity product = productsRepo.findById(id).orElseThrow(() -> new RuntimeException("Product not found"));
         return new ProductsRes(product);
     }
 
