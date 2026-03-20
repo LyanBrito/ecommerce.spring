@@ -2,6 +2,7 @@ package org.example.ecommerce.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.ecommerce.dto.orders.OrdersRes;
 import org.example.ecommerce.entities.enums.OrderStatus;
 import java.time.LocalDate;
 import java.util.HashSet;
@@ -12,7 +13,6 @@ import java.util.UUID;
 @Getter
 @Setter
 @AllArgsConstructor
-@NoArgsConstructor
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -29,9 +29,16 @@ public class OrderEntity {
     @OneToMany(mappedBy = "id.orderEntity")
     private Set<OrderItem> items =  new HashSet<>();
 
-    public OrderEntity(OrderStatus order_status, UserEntity client, LocalDate moment) {
+    public OrderEntity() {
         this.order_status = OrderStatus.WAITING_PAYMENT;
-        this.client = client;
         this.moment = LocalDate.now();
+    }
+
+    public OrderEntity(LocalDate moment, OrderStatus order_status, UserEntity client, PaymentEntity paymentEntity, Set<OrderItem> items) {
+        this.moment = moment;
+        this.order_status = order_status;
+        this.client = client;
+        this.paymentEntity = paymentEntity;
+        this.items = items;
     }
 }
