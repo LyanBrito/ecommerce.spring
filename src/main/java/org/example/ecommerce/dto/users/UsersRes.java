@@ -18,7 +18,6 @@ public class UsersRes {
     private String name;
     private String email;
     private String tell;
-    private List<OrderEntity> orders = new ArrayList<>();
     private Roles roles;
 
     public UsersRes(UserEntity user) {
@@ -26,7 +25,6 @@ public class UsersRes {
         this.name = user.getName();
         this.email = user.getEmail();
         this.tell = user.getTell();
-        this.orders = user.getOrders();
         this.roles = user.getRoles();
     }
 }
