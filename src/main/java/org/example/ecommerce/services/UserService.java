@@ -18,13 +18,13 @@ public class UserService {
         this.usersRepo = usersRepo;
     }
 
-    public UsersRes showAll() {
+    public List<UsersRes> showAll() {
         List<UserEntity> users = usersRepo.findAll();
-        return (UsersRes) users.stream().map(UsersRes::new).toList();
+        return users.stream().map(UsersRes::new).toList();
     }
 
     public String createNew(UsersReq req) {
-        UserEntity u = new UserEntity(req.getName(), req.getEmail(), req.getPassword());
+        UserEntity u = new UserEntity(req);
         usersRepo.save(u);
         return "creado";
     }

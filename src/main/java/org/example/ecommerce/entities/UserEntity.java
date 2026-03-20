@@ -2,6 +2,7 @@ package org.example.ecommerce.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.example.ecommerce.dto.users.UsersReq;
 import org.example.ecommerce.entities.enums.Roles;
 
 import java.util.ArrayList;
@@ -28,6 +29,11 @@ public class UserEntity {
     @OneToMany(mappedBy = "client")
     private List<OrderEntity> orders = new ArrayList<>();
 
-    public UserEntity(String name, String email, String password) {
+    public UserEntity(UsersReq req) {
+        this.name = req.getName();
+        this.email = req.getEmail();
+        this.tell = req.getTell();
+        this.password = req.getPassword();
+        this.roles = req.getRoles();
     }
 }
