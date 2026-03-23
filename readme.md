@@ -1,7 +1,9 @@
 # Ecommerce.spring
 
 Projeto de testes para aprendizado da criação de tabelas relacionadas entre si, e desenvolvimento de uma API complexa
-com diversas camadas. Acesse a API por aqui: [ecommerce.spring](https://ecommerce-lyan-cudjefdgbebzg4b9.mexicocentral-01.azurewebsites.net)
+com diversas camadas. Acesse a API por aqui: [ecommerce.spring](https://ecommerce-lyan-cudjefdgbebzg4b9.mexicocentral-01.azurewebsites.net) 
+> O Banco de dados foi desativado no momento por inatividade, portanto, o API está desligada.
+> Para testar a API, clone o repositório e conecte em um banco local, ou entre em contato para reativação do banco.
 
 ## Tabelas e Requisições
 
