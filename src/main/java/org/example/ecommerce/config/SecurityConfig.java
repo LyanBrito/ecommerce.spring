@@ -18,21 +18,19 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/new").permitAll()
-                        .requestMatchers("/users/delete/").permitAll()
-                        .requestMatchers("/users/update/").permitAll()
-                        .requestMatchers("/users/show/").permitAll()
-                        .requestMatchers("/users/show").hasRole("ADMIN")
-                        .requestMatchers("/products/create").hasRole("ADMIN")
-                        .requestMatchers("/products/show").permitAll()
-                        .requestMatchers("/products/show/").permitAll()
-                        .requestMatchers("/orders/show").permitAll()
-                        .requestMatchers("/orders/show/").permitAll()
-                        .requestMatchers("/orders/create/").permitAll()
-                        .requestMatchers("/orderItens/create/").permitAll()
-                        .requestMatchers("/orderItens/show").permitAll()
-                        .requestMatchers("/orderItens/show/").permitAll()
-                        .requestMatchers("/admin").hasRole("ADMIN")
+                        .requestMatchers("/users/new",
+                                "/users/delete/**",
+                                "/users/update/",
+                                "/users/show/**",
+                                "/products/show",
+                                "/products/show/**",
+                                "/orders/create/**",
+                                "/orders/show",
+                                "/orders/show/**",
+                                "/orderItens/create/**",
+                                "/orderItens/show/**"
+                                ).permitAll()
+                          .requestMatchers("/admin", "/users/show", "/products/create").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .httpBasic(Customizer.withDefaults());
 
