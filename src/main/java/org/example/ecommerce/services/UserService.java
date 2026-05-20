@@ -23,8 +23,9 @@ public class UserService {
         return users.stream().map(UsersRes::new).toList();
     }
 
-    public UsersRes createNew(UsersReq req) {
+    public UsersRes createNew(UsersReq req, String imagePath) {
         UserEntity u = new UserEntity(req);
+        u.setUserProfilePic(imagePath);
         usersRepo.save(u);
         return new UsersRes(u);
     }

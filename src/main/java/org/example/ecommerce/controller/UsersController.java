@@ -2,23 +2,28 @@ package org.example.ecommerce.controller;
 
 import jakarta.validation.Valid;
 import org.example.ecommerce.dto.users.UsersReq;
+import org.example.ecommerce.services.UserImgsService;
 import org.example.ecommerce.services.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
 public class UsersController {
     private final UserService userService;
+    private final UserImgsService imageService;
 
-    public UsersController(UserService userService) {
+    public UsersController(UserService userService, UserImgsService imageService) {
         this.userService = userService;
+        this.imageService = imageService;
     }
     @PostMapping("/new")
-    public ResponseEntity<?> createUser (@Valid @RequestBody UsersReq req) {
-        return ResponseEntity.ok(userService.createNew(req));
+    public ResponseEntity<?> createUser (@Valid @RequestBody UsersReq req, @RequestParam MultipartFile imagePath) throws IOException {
+        return ResponseEntity.ok(userService.createNew(req, imageService.savePhoto(imagePath)));
     }
     @GetMapping("/show")
     public ResponseEntity<?> showAll() {

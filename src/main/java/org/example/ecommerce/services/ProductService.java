@@ -18,8 +18,9 @@ public class ProductService {
         this.productsRepo = productsRepo;
     }
 
-    public ProductsRes create(ProductsReq req) {
+    public ProductsRes create(ProductsReq req, String imagePath) {
         ProductEntity product = new ProductEntity(req);
+        product.setImgUrl(imagePath);
         productsRepo.save(product);
         return new ProductsRes(product);
     }

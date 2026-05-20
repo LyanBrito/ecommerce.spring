@@ -26,6 +26,7 @@ public class UserEntity {
     private String password;
     @Enumerated(EnumType.STRING)
     private Roles roles;
+    private String userProfilePic;
 
     @OneToMany(mappedBy = "client")
     private List<OrderEntity> orders = new ArrayList<>();
